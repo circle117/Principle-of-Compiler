@@ -1,0 +1,5 @@
+( lparen
+) rparen
+, comma
+; semicolon
+. period

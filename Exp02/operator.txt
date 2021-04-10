@@ -1,0 +1,11 @@
++ plus
+- minus
+* times
+/ slash
+= eql
+# neq
+< lss
+<= leq
+> gtr
+>= geq
+:= becomes
