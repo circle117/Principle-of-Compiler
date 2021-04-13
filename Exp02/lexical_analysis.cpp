@@ -89,7 +89,7 @@ void lexical_analysis(vector<string> &lines, vector<string> $res)
         int cur = 0;
         while (begin<lines[i].size())
         {
-            // 空格
+            // space
             char a = lines[i][cur];
             string sub(1, a);
             // cout << begin<<" " << cur << " "<< sub << endl;
@@ -103,9 +103,9 @@ void lexical_analysis(vector<string> &lines, vector<string> $res)
                 cur += 1;
                 begin += 1;
             }
-            // 
             else if (cur>0 && opes_dels.find(lines[i].substr(cur-1,2))!=opes_dels.end())
             {
+                // cout << "in" << endl;
                 if (cur-begin>1)
                 {
                     find_word(lines[i].substr(begin, cur-1-begin));
@@ -115,7 +115,7 @@ void lexical_analysis(vector<string> &lines, vector<string> $res)
                 cur += 1;
                 begin = cur;
             }
-            else if (opes_dels.find(sub)!=opes_dels.end())
+            else if (opes_dels.find(sub)!=opes_dels.end() && (lines[i][cur+1]=='\0' | opes_dels.find(lines[i].substr(cur,2))==opes_dels.end()))
             {
                 if (cur!=begin)
                 {
@@ -144,7 +144,7 @@ int main()
 {
     load_reserved_word();
 
-    string filename="pro.txt";
+    string filename="case_6.txt";
     vector<string> lines;
     string temp;
     ifstream in;
