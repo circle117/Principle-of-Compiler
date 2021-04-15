@@ -10,6 +10,7 @@ using namespace std;
 map<string,string> basic_characters;
 map<string,string> opes_dels;
 
+// 以空格分隔
 void split(string str, vector<string> &res)
 {
     istringstream ss(str);
@@ -64,21 +65,51 @@ void output_result(string key, string value)
 
 void find_word(string substring)
 {
-    if (basic_characters.find(substring)!=basic_characters.end())
-    {
-        output_result(basic_characters[substring], substring);
-    }
-    else
-    {
-        string char_type = "number";
-        for(int k=0; k<substring.size(); k++)
-            if ('a' <= substring[k] & substring[k]<= 'z')
+    string char_type = "None";
+    int cur = 0;
+    for(int k=0; k<substring.size(); k++)
+        // ident
+        if ('a' <= substring[k] & substring[k]<= 'z')
+        {
+            if (char_type!="ident")
             {
+                if (cur!=k)
+                {
+                    output_result(char_type, substring.substr(cur, k-cur));
+                    cur = k;
+                }
                 char_type = "ident";
-                break;
             }
-        output_result(char_type, substring);
-    }
+        }
+        // number
+        else if ('0' <= substring[k] & substring[k]<= '9')
+        {
+            if (char_type!="number" && char_type!="ident")
+                char_type = "number";
+        }
+        // illegal word
+        else
+        {
+            if (cur!=k)
+            {
+                if (basic_characters.find(substring.substr(cur,k-cur+1))!=basic_characters.end())
+                {
+                    char_type = basic_characters[substring.substr(cur,k-cur+1)];
+                    output_result(char_type, substring.substr(cur,k-cur+1));
+                    cur = k+1;
+                }
+                else
+                {
+                    output_result(char_type, substring.substr(cur, k-cur));
+                    cur = k;
+                }
+            }
+            char_type = "nul";
+            output_result(char_type, substring.substr(cur, 1));
+            cur += 1;
+        }
+    if (cur!=substring.size())
+        output_result(char_type, substring.substr(cur, substring.size()-cur));
 };
 
 void lexical_analysis(vector<string> &lines, vector<string> $res)
@@ -89,10 +120,9 @@ void lexical_analysis(vector<string> &lines, vector<string> $res)
         int cur = 0;
         while (begin<lines[i].size())
         {
-            // space
             char a = lines[i][cur];
             string sub(1, a);
-            // cout << begin<<" " << cur << " "<< sub << endl;
+            // space
             if (lines[i][cur]==' ')
             {
                 if (cur!=begin)
@@ -103,6 +133,7 @@ void lexical_analysis(vector<string> &lines, vector<string> $res)
                 cur += 1;
                 begin += 1;
             }
+            // operators whose length is 2
             else if (cur>0 && opes_dels.find(lines[i].substr(cur-1,2))!=opes_dels.end())
             {
                 // cout << "in" << endl;
@@ -115,6 +146,7 @@ void lexical_analysis(vector<string> &lines, vector<string> $res)
                 cur += 1;
                 begin = cur;
             }
+            // operators whose length is 1
             else if (opes_dels.find(sub)!=opes_dels.end() && (lines[i][cur+1]=='\0' | opes_dels.find(lines[i].substr(cur,2))==opes_dels.end()))
             {
                 if (cur!=begin)
@@ -131,6 +163,7 @@ void lexical_analysis(vector<string> &lines, vector<string> $res)
                 cur += 1;
             }
 
+            // come to the end of the current line
             if (cur==lines[i].size()& begin!=cur)
             {
                 find_word(lines[i].substr(begin, cur-begin));

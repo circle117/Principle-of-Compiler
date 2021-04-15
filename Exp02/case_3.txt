@@ -1,0 +1,12 @@
+const a=1;
+const D=0;
+var b,c; 
+begin 
+read(b); 
+if b>=0
+then
+write(a);
+if B<=0
+then
+write(d);
+end.

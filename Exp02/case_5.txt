@@ -1,0 +1,9 @@
+Const a = 10;
+Var bcbcbcbc,c;
+begin
+  read(bcbcbcbc);
+c := bcbcbcbc + a
+if odd(c);
+then
+write (a);
+end.
