@@ -1,6 +1,7 @@
 Var x,y2,0z;a34 3ab45!<= 234!267abc&
 beginac123ab
- x := 10;?""2345
+ x := 10;?""2345，
  y2 := -5; read(0z);
  if 0z > 3 then write(x);
 end.
+begin

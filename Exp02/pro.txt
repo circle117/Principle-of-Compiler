@@ -1,7 +1,0 @@
-Const a=100;
-Var b,c;
-Begin
-    Read(b);
-    c:=a+b;
-    write(c);
-End.

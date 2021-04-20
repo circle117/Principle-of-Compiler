@@ -109,7 +109,9 @@ void find_word(string substring)
             cur += 1;
         }
     if (cur!=substring.size())
+    {
         output_result(char_type, substring.substr(cur, substring.size()-cur));
+    }
 };
 
 void lexical_analysis(vector<string> &lines, vector<string> $res)
