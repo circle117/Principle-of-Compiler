@@ -1,0 +1,7 @@
+// (a+15*b 缺少右括号
+(lparen,( )
+(ident, a)
+(plus, + )
+(number, 15)
+(times, * )
+(ident, b )

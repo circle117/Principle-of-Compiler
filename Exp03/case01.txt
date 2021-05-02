@@ -1,0 +1,8 @@
+// (a+15)*b 语法正确
+(lparen,( )
+(ident, a)
+(plus, + )
+(number, 15)
+(rparen,) )
+(times, * )
+(ident, b )

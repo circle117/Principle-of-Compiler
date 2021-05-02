@@ -1,0 +1,7 @@
+// (a+15)* 缺少因子
+(lparen,( )
+(ident, a)
+(plus, + )
+(number, 15)
+(rparen,) )
+(times, * )
