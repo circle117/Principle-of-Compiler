@@ -1,0 +1,9 @@
+// (a*5)+4>
+(lparen,( )
+(ident, a)
+(times, * )
+(number, 5)
+(rparen, ) )
+(plus, + )
+(number, 4)
+(gtr,  > )

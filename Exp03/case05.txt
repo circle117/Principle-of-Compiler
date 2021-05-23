@@ -1,0 +1,10 @@
+// (a*5)+4=b 语法正确
+(lparen,( )
+(ident, a)
+(times, * )
+(number, 5)
+(rparen, ) )
+(plus, + )
+(number, 4)
+(eql,  = )
+(ident, b )

@@ -1,0 +1,15 @@
+{
+    "files.associations": {
+        "vector": "cpp",
+        "iostream": "cpp",
+        "fstream": "cpp",
+        "istream": "cpp",
+        "ostream": "cpp",
+        "sstream": "cpp",
+        "streambuf": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "Disabled",
+    "code-runner.enecutorMap": {
+        "cpp":"chcp 65001"
+    }
+}

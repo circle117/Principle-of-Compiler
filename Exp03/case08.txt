@@ -1,0 +1,9 @@
+// odd (a*5+4) 语法正确
+(oddsym,  odd )
+(lparen,( )
+(ident, a)
+(times, * )
+(number, 5)
+(plus, + )
+(number, 4)
+(rparen, ) )
